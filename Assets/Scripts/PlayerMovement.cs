@@ -19,10 +19,14 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float jumpForce = 14f;
     private bool isGrounded;
     AudioManager am;
-    
 
+
+    public GameManager gameManager;
+
+    public static int health = 4;
     private void Awake()
     {
+
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         sr = GetComponent<SpriteRenderer>();
@@ -33,7 +37,8 @@ public class PlayerMovement : MonoBehaviour
 
 
     }
-
+    private bool isDead;
+    
     private void Update()
     {
         isGrounded = IsGrounded();
@@ -45,9 +50,10 @@ public class PlayerMovement : MonoBehaviour
             
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
         }
-        if (LifeManager.health <= 0)
+        if (LifeManager.health <= 0 && isDead)
         {
-            
+            isDead = true;
+            gameManager.GameOver();
         };
         UpdateAnimationState();
 

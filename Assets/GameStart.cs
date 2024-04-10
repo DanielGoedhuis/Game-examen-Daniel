@@ -5,19 +5,32 @@ using UnityEngine.SceneManagement;
 
 public class GameStart : MonoBehaviour
 {
+    public List<GameObject> inGameUIObjects;
 
-    // Start is called before the first frame update
-
-    private void Update()
+    void Start()
     {
+        PopulateInGameUIList();
+    }
+
+    void PopulateInGameUIList()
+    {
+        GameObject[] allObjects = GameObject.FindGameObjectsWithTag("inGameUI");
+        inGameUIObjects = new List<GameObject>(allObjects);
+        Debug.Log(allObjects);
+        // Start is called before the first frame update
+    }
+        private void Update()
+    {
+            
         if (SceneManager.sceneCount == 1)
         {
-            Object[] allObjects = Resources.FindObjectsOfTypeAll<GameObject>();
-            GameObject[] appear = GameObject.FindGameObjectsWithTag("inGameUI");
-            foreach (GameObject obj in allObjects)
+           
+            
+          
+            foreach (GameObject obj in inGameUIObjects)
             {
-
-                if (obj is GameObject && !((GameObject)obj).activeSelf && appear != null)
+                Debug.Log(obj);
+                if (obj is GameObject && !(((GameObject)obj).activeSelf) )
                 {
 
                     obj.SetActive(true);

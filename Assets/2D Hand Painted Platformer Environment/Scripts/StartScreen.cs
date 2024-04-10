@@ -9,10 +9,7 @@ public class StartScreen : MonoBehaviour
 
     private void Start()
     {
-        Scene activeScene = SceneManager.GetActiveScene();
-        Debug.Log("Active Scene Name: " + activeScene.name);
-        Debug.Log("Active Scene Build Index: " + activeScene.buildIndex);
-        Debug.Log("Active Scene Path: " + activeScene.path);
+
     }
 
 
