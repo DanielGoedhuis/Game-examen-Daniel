@@ -57,7 +57,7 @@ public class PlayerMovement : MonoBehaviour
         {
             isDead = true;
             SceneManager.LoadScene(2, LoadSceneMode.Additive);
-        };
+        }
         UpdateAnimationState();
 
         fallDetector.transform.position = new Vector2(transform.position.x, fallDetector.transform.position.y);
@@ -72,7 +72,10 @@ public class PlayerMovement : MonoBehaviour
             transform.position = respawnPoint;
             am.PlaySFX(am.death);
             LifeManager.health--;
-            
+        }
+        if(collision.tag == "finish")
+        {
+            SceneManager.LoadScene(3, LoadSceneMode.Additive);
         }
 
         if (collision.tag == "Traps")

@@ -10,6 +10,7 @@ TagManager:
   - inGameUI
   - Traps
   - GameOver
+  - finish
   layers:
   - Default
   - TransparentFX
