@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -55,7 +56,7 @@ public class PlayerMovement : MonoBehaviour
         if (LifeManager.health <= 0 && !isDead)
         {
             isDead = true;
-            gameManager.GameOver();
+            SceneManager.LoadScene(2, LoadSceneMode.Additive);
         };
         UpdateAnimationState();
 

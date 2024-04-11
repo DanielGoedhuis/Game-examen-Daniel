@@ -12,11 +12,7 @@ public class GameStart : MonoBehaviour
         Scene Active = SceneManager.GetActiveScene();
         if (SceneManager.sceneCount == 1)
         {
-            if (gameObject.CompareTag("GameOver") && gameObject.activeSelf)
-            {
-                Debug.Log("Active");
-                GameOverUI.SetActive(false);
-            }
+           
             Object[] allObjects = Resources.FindObjectsOfTypeAll<GameObject>();
           
             foreach (GameObject obj in allObjects)

@@ -16,7 +16,7 @@ public class StartScreen : MonoBehaviour
     
     //deze void zorgt ervoor dat we naar een nieuwe scene gaan als er op de start game knop wordt gedrukt.
     public void PlayGame()
-    {   
+    {
         
         SceneManager.LoadScene(1);
     }

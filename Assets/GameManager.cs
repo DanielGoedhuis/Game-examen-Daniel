@@ -5,10 +5,21 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    public GameObject Gameover;
     public GameObject GameOverUI;
-    void Start()
+
+    private void Awake()
     {
-        
+       // DontDestroyOnLoad(Gameover);
+    }
+
+    public void LoadScene()
+    {
+        // Set the GameObject inactive before loading the scene
+        //Gameover.SetActive(false);
+
+        // Load the new scene
+        //SceneManager.LoadScene(1);
     }
 
     // Update is called once per frame
@@ -16,16 +27,14 @@ public class GameManager : MonoBehaviour
     {
         
     }
-    public void GameOver()
-    {
-        GameOverUI.SetActive(true);
-    }
+    
     public void restart()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
     }
     public void mainMenu()
     {
         SceneManager.LoadScene( 0, LoadSceneMode.Additive);
+        SceneManager.UnloadSceneAsync(2);
     }
 }
