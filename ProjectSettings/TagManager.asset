@@ -9,6 +9,7 @@ TagManager:
   - Audio
   - inGameUI
   - Traps
+  - GameOver
   layers:
   - Default
   - TransparentFX

@@ -4,7 +4,9 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class LifeManager : MonoBehaviour
+
 {
+    //hier staat er moet hoeveel levens de player begint
     public static int health = 4;
     
     public Image[] hearts;
@@ -13,7 +15,7 @@ public class LifeManager : MonoBehaviour
 
     public Sprite emptyHeart;
   
-  
+  //hier vervangt hij volle hartjes met lege hartjes als een player doodgaat
     void Update()
     {
         foreach (Image img in hearts)

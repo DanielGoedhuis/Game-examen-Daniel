@@ -40,6 +40,7 @@ public class PlayerMovement : MonoBehaviour
     private bool isDead;
     
     private void Update()
+        //hier checkt hij of de player op grond staat zodat hij kan springen
     {
         isGrounded = IsGrounded();
         dirX = Input.GetAxisRaw("Horizontal");
@@ -50,7 +51,8 @@ public class PlayerMovement : MonoBehaviour
             
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
         }
-        if (LifeManager.health <= 0 && isDead)
+        //kijkt hoeveel levens de player heeft en als het nul is zorgt hij ervoor dat het game over is
+        if (LifeManager.health <= 0 && !isDead)
         {
             isDead = true;
             gameManager.GameOver();
@@ -61,7 +63,7 @@ public class PlayerMovement : MonoBehaviour
 
    
 }
-
+    //hier checkt het of de player falt of iets dodelijks raakt
     public void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag == "FallDetector")
@@ -80,14 +82,14 @@ public class PlayerMovement : MonoBehaviour
             
         }
     }
-
+    //dit check of de player op de grond staat
     private bool IsGrounded()
         
     {
         RaycastHit2D hit = Physics2D.BoxCast(boxCollider.bounds.center, boxCollider.bounds.size, 0f, Vector2.down, 0.1f, jumpableGround);
         return hit.collider != null;
     }
-
+    //dit speelt de animation af als de player beweegt
     private void UpdateAnimationState()
     {
         if (dirX > 0f)

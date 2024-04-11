@@ -5,34 +5,24 @@ using UnityEngine.SceneManagement;
 
 public class GameStart : MonoBehaviour
 {
-    public List<GameObject> inGameUIObjects;
-
-    void Start()
+    public GameObject GameOverUI;
+    //kijk of de game gestart is en zoja activeert het bepaalde gameobjecten die nodig zijn
+    private void Update()
     {
-        PopulateInGameUIList();
-    }
-
-    void PopulateInGameUIList()
-    {
-        GameObject[] allObjects = GameObject.FindGameObjectsWithTag("inGameUI");
-        inGameUIObjects = new List<GameObject>(allObjects);
-        Debug.Log(allObjects);
-        // Start is called before the first frame update
-    }
-        private void Update()
-    {
-            
+        Scene Active = SceneManager.GetActiveScene();
         if (SceneManager.sceneCount == 1)
         {
-           
-            
-          
-            foreach (GameObject obj in inGameUIObjects)
+            if (gameObject.CompareTag("GameOver") && gameObject.activeSelf)
             {
-                Debug.Log(obj);
-                if (obj is GameObject && !(((GameObject)obj).activeSelf) )
-                {
-
+                Debug.Log("Active");
+                GameOverUI.SetActive(false);
+            }
+            Object[] allObjects = Resources.FindObjectsOfTypeAll<GameObject>();
+          
+            foreach (GameObject obj in allObjects)
+            {
+                if (obj.CompareTag("inGameUI")){
+                    
                     obj.SetActive(true);
 
                 }
